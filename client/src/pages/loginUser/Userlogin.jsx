@@ -1,43 +1,61 @@
-import React, { useEffect, useState } from "react";
-import Sawo from "sawo";
-
-const API_KEY = "e00d0a49-98ff-473e-8676-07ff7cd36072";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import SawoLogin from "sawo-react";
+import axios from "axios";
 
 const Userlogin = () => {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
-  const [payload, setPayload] = useState({});
-
+  const navigate = useNavigate();
   useEffect(() => {
-    var config = {
-      containerID: "1fcc9a11-6090-4ac5-8f31-50c5ee97246e",
-      identifierType: "email",
-      apiKey: API_KEY,
-      onSuccess: (payload) => {
-        console.log("Payload : " + JSON.stringify(payload));
-        setUserLoggedIn(true);
-        setPayload(payload);
-      },
-    };
-    let sawo = new Sawo(config);
-    sawo.showForm();
-  }, []);
+    if (isUserLoggedIn) {
+      navigate("/memberPage");
+    }
+  });
+  const Apicall = async (payload) => {
+    if (payload) {
+      if (payload.customFieldInputValues.Name && payload.identifier) {
+        const name = payload.customFieldInputValues.Name;
+        const phone = payload.identifier;
+        try {
+          const config = {
+            headers: {
+              "Content-type": "application/json",
+            },
+          };
+          const { data } = await axios.post(
+            "/api/user/login",
+            { name, phone },
+            config
+          );
+          console.log(data);
+          if (data.msg) {
+            console.log(data.msg);
+          } else {
+            localStorage.setItem("Info", JSON.stringify(data));
+            setUserLoggedIn(true);
+          }
+        } catch (err) {
+          console.log(err);
+          setUserLoggedIn(false);
+        }
+      }
+    }
+  };
+
+  function sawoLoginCallback(payload) {
+    Apicall(payload);
+  }
+
+  const sawoConfig = {
+    onSuccess: sawoLoginCallback, //required,
+    identifierType: "phone_number_sms", //required, must be one of: 'email', 'phone_number_sms',
+    apiKey: "e00d0a49-98ff-473e-8676-07ff7cd36072",
+    containerHeight: "300px", // the login container height, default is 300px
+  };
 
   return (
-    <div className="containerStyle">
-      <section>
-        <h2 className="title">SAWO React Example App</h2>
-        <h2 className="title">User Logged In : {isUserLoggedIn.toString()}</h2>
-
-        {!isUserLoggedIn ? (
-          <div className="formContainer" id="sawo-container"></div>
-        ) : (
-          <div className="loggedin">
-            <h2>User Successful Login</h2>
-            <div>UserId: {payload.user_id}</div>
-            <div>Verification Token: {payload.verification_token}</div>
-          </div>
-        )}
-      </section>
+    <div>
+      <SawoLogin config={sawoConfig} />
     </div>
   );
 };

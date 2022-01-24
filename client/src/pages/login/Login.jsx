@@ -4,7 +4,7 @@ const Login = () => {
   return (
     <div>
       <button>
-        <Link to="/">Register As Doctor</Link>
+        <Link to="/login_as_Doctor">LOGIN As Doctor</Link>
       </button>
       <br></br>
       <button>

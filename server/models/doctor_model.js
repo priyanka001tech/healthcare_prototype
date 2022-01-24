@@ -1,10 +1,11 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const DoctorModel_member = mongoose.Schema(
   {
     name: { type: String, required: true },
     specialist: { type: String, required: true },
-    career: { type: String, required: true },
+    degree: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
   },
@@ -25,5 +26,5 @@ DoctorModel_member.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-const doctor_model = mongoose.model("member", DoctorModel_member);
-module.exports = doctor_model;
+const Member = mongoose.model("Member", DoctorModel_member);
+module.exports = Member;
