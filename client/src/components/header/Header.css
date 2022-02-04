@@ -1,0 +1,38 @@
+.header-img {
+  height: 100px;
+}
+
+.Title_main {
+  color: #517ef2;
+}
+
+.header-circle {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: #63a0ff;
+}
+
+.header-circle2 {
+  position: absolute;
+
+  top: -7%;
+  right: -2%;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background: #517ef2;
+}
+
+@media (max-width: 499px) {
+  .home-header {
+    flex-direction: column-reverse;
+    padding: 10px 10px;
+  }
+  .design {
+    display: none;
+  }
+}

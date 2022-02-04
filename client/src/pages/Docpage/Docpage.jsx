@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Doctorpage = () => {
+const Docpage = () => {
   const [name, setName] = useState();
   const [email, setemail] = useState();
   const [specialist, setspecialist] = useState();
@@ -23,9 +23,10 @@ const Doctorpage = () => {
       navigate("/");
     }
   }, []);
+
   return (
     <div>
-      <p>current user is {name} </p>and his data is {email} {degree}{" "}
+      <p>current user is {name} </p>and his data is {email} , {degree} ,{" "}
       {specialist}
       <br></br>
       <button onClick={logoutHandler}>Logout</button>
@@ -33,4 +34,4 @@ const Doctorpage = () => {
   );
 };
 
-export default Doctorpage;
+export default Docpage;

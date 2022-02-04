@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userModel_member = mongoose.Schema(
   {
     name: { type: String, required: true },
-    phone: { type: Number, required: true, unique: true },
+    phone: { type: Number, required: true },
   },
   {
     timeStamps: true,

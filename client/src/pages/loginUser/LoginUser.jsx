@@ -8,7 +8,7 @@ const Userlogin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isUserLoggedIn) {
-      navigate("/memberPage");
+      navigate("/patient");
     }
   });
   const Apicall = async (payload) => {

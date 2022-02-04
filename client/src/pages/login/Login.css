@@ -1,0 +1,93 @@
+.login{
+    margin-top: 10vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(99, 160, 255, 0.23);
+    border-radius: 30px;
+    background-size: cover;
+}
+.loginTitle{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 10px;
+
+    color: rgba(10, 82, 149, 0.9);
+}
+.loginForm{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.loginForm>label{
+    margin:10px 0;
+}
+.loginInput{
+    padding:10px;
+    background-color: white;
+    border: 2px solid rgb(137, 211, 245);
+}
+.loginButton{
+    margin-top: 40px;
+    cursor: pointer;
+    background: #63A0FF;
+    border:none;
+    color:white;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.loginButton:hover{
+    background:#407fc7;
+}
+.loginRegisterButton{
+    position: absolute;
+    top:40px;
+    right:170px;
+    background-color:rgb(122, 186, 243);
+    cursor: pointer;
+    border:none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    box-shadow: 6px 10px rgb(206, 204, 204);
+}
+.loginRegisterButton:hover{
+    background:#3b96c0;
+}
+.log-text{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+.log-text:hover{
+    color:rgb(12, 12, 12);
+}
+.log-img{
+    width:100%;
+    height:100%;
+    margin-top: 70px;
+    border: 2px solid rgb(116, 116, 218);
+}
+@media screen and (max-width: 601px) {
+    .login{
+      height: 130vh;
+    }
+}
+
+@media screen and (min-width:602px) and (max-width: 1000px) {
+    .login{
+        height: 60vh;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .login{
+        margin-top: 10vh;
+        height: 100vh;
+    }
+}

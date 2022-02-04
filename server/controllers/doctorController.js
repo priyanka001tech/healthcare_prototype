@@ -50,4 +50,16 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerDoctor, authUser };
+const All_Doctor = asyncHandler(async (req, res) => {
+  try {
+    const GET_All_Doctor = await Member.find(
+      {},
+      "name email degree specialist"
+    );
+    res.json(GET_All_Doctor);
+  } catch (err) {
+    res.status(400);
+  }
+});
+
+module.exports = { registerDoctor, authUser, All_Doctor };
