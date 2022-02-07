@@ -9,6 +9,7 @@ import List from "./List";
 export default function Patient() {
   const [Name, setName] = useState();
   let [number, setnumber] = useState();
+  let [ID, setID] = useState();
   const [docs, setDocs] = useState();
 
   const navigate = useNavigate();
@@ -24,12 +25,31 @@ export default function Patient() {
     } catch (err) {}
   };
 
+  const send_call_req = async (senderID, receiverID) => {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { api } = await axios.post(
+        "/api/requests/call",
+        { senderID, receiverID },
+        config
+      );
+      console.log(api);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     fetch_all_doc();
   }, []);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("Info"));
+    setID(user.id);
     setName(user.name);
     setnumber(user.phone);
     if (!user) {
@@ -61,10 +81,13 @@ export default function Patient() {
             return (
               <List
                 key={doc._id}
+                receiverID={doc._id}
+                senderID={ID}
                 name={doc.name}
                 specialist={doc.specialist}
                 email={doc.email}
                 degree={doc.degree}
+                send_call_req={send_call_req}
               />
             );
           })}

@@ -1,6 +1,7 @@
 import React from "react";
 
 const List = (props) => {
+  console.log(props.senderID + " " + props.receiverID);
   return (
     <>
       <div className="col">
@@ -10,7 +11,13 @@ const List = (props) => {
             <p className="card-text docsubname">
               {props.degree}, {props.specialist} ,{props.email}
             </p>
-            <button type="button" className="btn btn-info btn button">
+
+            <button
+              onClick={() =>
+                props.send_call_req(props.senderID, props.receiverID)
+              }
+              className="btn btn-info btn button"
+            >
               Chat
             </button>
           </div>

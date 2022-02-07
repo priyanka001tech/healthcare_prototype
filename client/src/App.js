@@ -11,7 +11,7 @@ import Orthopedics from "./pages/ListDoc/Orthopedics/Orthopedics";
 import Neurologist from "./pages/ListDoc/Neurologist/Neurologist";
 import Dermatologist from "./pages/ListDoc/Dermatologist/Dermatologist";
 import Cardiologist from "./pages/ListDoc/Cardiologist/Cardiologist";
-import Dashboard from "./pages/Docpage/Index";
+import Docpage from "./pages/Docpage/MAIN/Docpage";
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
@@ -32,7 +32,7 @@ function App() {
         <Route path="/neurologist" element={<Neurologist />} exact />
         <Route path="/dermatologist" element={<Dermatologist />} exact />
         <Route path="/cardiologist" element={<Cardiologist />} exact />
-        <Route path="/Doctor" element={<Dashboard />} exact />
+        <Route path="/Doctor" element={<Docpage />} exact />
       </Routes>
     </Router>
   );

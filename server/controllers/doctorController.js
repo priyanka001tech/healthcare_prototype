@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Member = require("../models/doctor_model.js");
+const CALL = require("../models/CALL_req.js");
 const generateToken = require("../config/generateToken.js");
 
 const registerDoctor = asyncHandler(async (req, res) => {
@@ -62,4 +63,14 @@ const All_Doctor = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerDoctor, authUser, All_Doctor };
+const get_All_requests = asyncHandler(async (req, res) => {
+  try {
+    let result = await CALL.find({ doctor: req.user._id }).populate("sender");
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400);
+    throw new Error(err.message);
+  }
+});
+
+module.exports = { registerDoctor, authUser, All_Doctor, get_All_requests };
