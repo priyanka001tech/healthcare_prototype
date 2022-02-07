@@ -13,12 +13,12 @@ export default function Login() {
       </div>
       <div>
         <div className="d-flex justify-content-around align-items-center flex-column  ">
-          <button className="btn m-2" type="button">
+          <button className="btn-my m-2" type="button">
             <Link to="/register" className="text-home">
               Register as Doctor
             </Link>
           </button>
-          <button className="btn m-2" type="button">
+          <button className="btn-my m-2" type="button">
             <Link to="/register_as_user" className="text-home">
               Register as Patient
             </Link>

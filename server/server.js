@@ -7,6 +7,7 @@ const connectDB = require("./config/db.js");
 connectDB();
 const router = require("./routes/registrationRoutes.js");
 const { not_found, error_handler } = require("./Middleware/errorMiddleware");
+const Reqrouter = require("./routes/reqRout.js");
 
 require("dotenv").config();
 app.use(express.json());
@@ -76,6 +77,7 @@ app.post("/api/supportCall", async (req, res) => {
 });
 
 app.use("/api/user", router);
+app.use("/api/requests", Reqrouter);
 
 app.use(not_found);
 
